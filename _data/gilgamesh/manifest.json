@@ -8,6 +8,14 @@
         "id": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/canvas",
         "type": "Canvas",
         "duration": 203.0,
+        "annotations": [
+          
+          {
+            "type": "AnnotationPage",
+            "id": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/canvas/original.json",
+            "label": "Original"
+          }
+        ],
         "items": [
           {
             "id": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/paintings",
