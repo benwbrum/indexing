@@ -39,6 +39,9 @@ collections:
   manifests:
     output: true
     permalink: /:path/manifest.json
+  terms:
+    output: true
+    permalink: /index/:path/
 
 
 
