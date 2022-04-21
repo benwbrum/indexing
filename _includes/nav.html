@@ -18,7 +18,7 @@
 
       {%- if site.terms.size != 0 -%}
          <div class="trigger">
-           Index
+           <a class="page-link" href="{{page_url index-terms}}">Index</a>
            {%- for term in site.terms -%}
             {%- if term.title -%}
               <div>
