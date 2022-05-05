@@ -484,7 +484,7 @@
         "source": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/canvas",
         "selector": {
           "type": "PointSelector",
-          "t": "2766.756756"
+          "t": "1.756756"
         }
       }
     },
@@ -1462,7 +1462,7 @@
         "source": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/canvas",
         "selector": {
           "type": "PointSelector",
-          "t": "3142.960181"
+          "t": "22.960181"
         }
       }
     },
@@ -1536,7 +1536,7 @@
         "source": "https://benwbrum.github.io/indexing/gilgamesh/canvas-1/canvas",
         "selector": {
           "type": "PointSelector",
-          "t": "3230.73161"
+          "t": "33.73161"
         }
       }
     },

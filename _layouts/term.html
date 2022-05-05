@@ -7,6 +7,40 @@ layout: page
   Annotations for "{{ page.index_term }}"
 </h2>
 
+<!-- TODO handle formats, unavailable manifests -->
+  <div id="uv" class="uv uv-audio sticky"></div>
+  <script
+    type="application/javascript"
+    src="https://universalviewer-git-fork-brumfieldlabs-load-a-a3d751-mnemoscene.vercel.app/umd/UV.js"
+  ></script>
+  <script src="{{ site.baseurl }}/assets/datatables/datatables.min.js"></script>
+  <script>
+    var myUV;
+
+    myUV = UV.init('uv', {
+        root: '../../{{ site.baseurl }}/assets/uv/umd'
+    });
+
+
+
+      // override config using an inline json object
+      myUV.on("configure", function ({ config, cb }) {
+        cb({
+            "options": {
+              "dropEnabled": true,
+              "footerPanelEnabled": false,
+              "headerPanelEnabled": false,
+              "leftPanelEnabled": false,
+              "limitLocales": false,
+              "overrideFullScreen": false,
+              "pagingEnabled": false,
+              "rightPanelEnabled": false
+             }
+        });
+      });
+</script>
+
+
 <table id="annotation-table"  class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -66,6 +100,7 @@ layout: page
                           {% if timestamp_array[1] %}
                             data-endtime="{{timestamp_array[1]}}"  
                           {% endif %}
+                          data-manifest="{{site.data[filename].manifest.id}}"
                       >
                        {% assign seconds = timestamp_array[0] | times: 1 %}
                         {% if seconds >= 3600 %}
@@ -121,15 +156,26 @@ layout: page
      var mySelectorTimestamp = $(this).find('td.timestamp').data('timestamp');
      var mySelectorEndTime = $(this).find('td.timestamp').data('endtime');
      var myTarget = $(this).find('td.timestamp').data('target');
+     var myManifest = $(this).find('td.timestamp').data('manifest');
      if (myTarget) {
        target = myTarget + '#t=' + mySelectorTimestamp;
        //if (mySelectorEndTime) {
        //  target = myTarget + '#t=' + mySelectorTimestamp + ',' + mySelectorEndTime;
        //}
        console.log(target);
+
+      // TODO: Set these
+      //  manifestUri: '{{site.data[page.manifest_name].manifest.id}}',
+      //  manifest: '{{site.data[page.manifest_name].manifest.id}}',
        myUV.set({
          target: target,
-       });       
+          manifestUri: myManifest,
+          manifest: myManifest,
+          iiifManifestId: myManifest,
+          canvasIndex: 0,
+          annotations: [],
+          locales: [{ name: 'en-GB', label: 'English' }, { name: 'cy-GB', label: 'Welsh' }]
+        });
        //myUV.extension.centerPanel.avcomponent.canvasInstances[0]._setCurrentTime(myDataAttr);
        //myUV.extension.centerPanel.avcomponent.play();
      }
